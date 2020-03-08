@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>{{ message }}</div>
     <todo-list />
   </div>
 </template>

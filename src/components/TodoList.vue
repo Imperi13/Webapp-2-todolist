@@ -7,7 +7,7 @@
         <ul>
           <li v-for="task in doneLists" :key="task.name">
             {{ task.name }}
-            <button @click="changeDone(task)">change</button>
+            <button @click="switchDone(task)">not yet</button>
           </li>
         </ul>
       </div>
@@ -16,6 +16,7 @@
         <ul>
           <li v-for="task in yetLists" :key="task.name">
             {{ task.name }}
+            <button @click="switchDone(task)">Done!!!</button>
           </li>
         </ul>
       </div>
@@ -60,9 +61,9 @@ export default {
         this.lists.push({ name: this.newTaskName, isdone: false });
       this.newTaskName = "";
     },
-    switchDone: function(task) {
-      const index = this.lists.findIndex(item => item === task.name);
-      this.lists[index].isdone = false;
+    switchDone(task) {
+      const index = this.lists.findIndex(item => item.name === task.name);
+      this.lists[index].isdone ^= true;
     }
   }
 };
